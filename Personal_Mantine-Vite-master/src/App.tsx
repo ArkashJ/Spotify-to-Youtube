@@ -1,15 +1,20 @@
-import { MantineProvider, Text, Button, Stack } from "@mantine/core";
+import { MantineProvider, Text, Button, Stack,Paper } from "@mantine/core";
 import { theme } from "./theme";
 
 export default function App() {
   return (
-    <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
-      <Stack align="center" mt={50}>
-        <Text size="xl" weight={500}>
-          Welcome to Mantine!
-        </Text>
-        <Button>Click the button</Button>
-      </Stack>
+    <MantineProvider theme={{
+      fontFamily: "Open Sans",
+      colorScheme: "dark"
+    }} 
+      withGlobalStyles 
+      withNormalizeCSS>
+      <Paper>
+        <Text>This is simple text</Text>
+        <Text>This is a complex text tag</Text>
+      </Paper>
+    <Button>Spotify to Youtube Playlist transfer</Button>
+    <Button>Login to your spotify account and get a youtube playlist</Button>
     </MantineProvider>
   );
 }
