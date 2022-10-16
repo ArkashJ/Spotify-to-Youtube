@@ -15,7 +15,6 @@
  */
  var SpotifyWebApi = require('spotify-web-api-node');
  const express = require('express');
- const fs = require('fs')
  
  
  const scopes = [
@@ -40,7 +39,6 @@
    'user-follow-modify'
  ];
  
- // these are the credentials of the app i created with my spotify developer account
  var spotifyApi = new SpotifyWebApi({
   clientId: '6e2768f493b44685830d71e6ba0dd4cf',
   clientSecret: 'f30a7efc365042f685527a235ec97795',
@@ -48,7 +46,7 @@
  });
  
  const app = express();
- const token = ""
+ var token =""
  
  app.get('/login', (req, res) => {
    res.redirect(spotifyApi.createAuthorizeURL(scopes));
@@ -68,9 +66,12 @@
    spotifyApi
      .authorizationCodeGrant(code)
      .then(data => {
-       token = data.body['access_token'];
+       const access_token = data.body['access_token'];
        const refresh_token = data.body['refresh_token'];
        const expires_in = data.body['expires_in'];
+
+       // save the token for use in other files
+       token = access_token
  
        spotifyApi.setAccessToken(access_token);
        spotifyApi.setRefreshToken(refresh_token);
@@ -103,5 +104,3 @@
      'HTTP Server up. Now go to http://localhost:8080/login in your browser.'
    )
  );
-
- 
