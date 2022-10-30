@@ -16,7 +16,10 @@ import IconButton from '@mui/material/IconButton';
 const drawerWidth = 240;
 
 const MainPage = () => {
-
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.reload();
+    }
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleMenu = (event) => {
@@ -64,7 +67,7 @@ const MainPage = () => {
                         onClose={handleClose}
                     >
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                        <MenuItem onClick={handleLogout}>Log Out</MenuItem>
                     </Menu>
                 </div>
             </Toolbar>
