@@ -1,14 +1,31 @@
 import React from 'react';
+import { useState } from 'react';
 import { Typography, Box, AppBar, Toolbar, CssBaseline, Drawer, ListItem, List, ListItemButton, ListItemIcon, ListItemText, Divider} from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import LayersIcon from '@mui/icons-material/Layers';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import IconButton from '@mui/material/IconButton';
+
 
 const drawerWidth = 240;
 
 const MainPage = () => {
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+    
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
     const gridStyle = {backgroundColor: "#002952"}
     const drawerStyle = {backgroundColor: "#121416"}
   return (
@@ -19,6 +36,37 @@ const MainPage = () => {
                 <Typography variant="h5" noWrap component="div" >
                     Spotify To Youtube
                 </Typography>
+                <div>
+                    <IconButton
+                        sx={{marginLeft: "1350px"}}
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                        color="inherit"
+                    >
+                        <AccountCircle />
+                    </IconButton>
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                    </Menu>
+                </div>
             </Toolbar>
         </AppBar>
         <Drawer

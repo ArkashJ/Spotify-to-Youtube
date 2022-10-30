@@ -1,20 +1,24 @@
 import React from 'react';
 import { Paper, Grid, Typography, Avatar, TextField, FormControlLabel, Checkbox, Button } from '@mui/material';
 import LockIcon from '@mui/icons-material/Lock';
-import { useState } from 'react';
-import {Link} from "react-router-dom";
+import { useEffect, useState } from 'react';
+import jwt_decode from "jwt-decode";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const SignUp = () => {
 
-    const paperStyle        = {backgroundColor: '#f5f4f5', padding: 20, height: '60vh', width: 400, margin: '120px auto'}
+    const paperStyle        = {backgroundColor: '#f5f4f5', padding: 20, height: '80vh', width: 400, margin: '120px auto'}
     const avatarStyle       = {backgroundColor: '#1c6e8c'}
     const textFieldStyle    = {paddingTop: 20}
 
     const [data, setData]   = useState({
+        firstName   :   "",
+        lastName    :   "",
         email       :   "",
         password    :   "",
     })
+    const navigate = useNavigate();
 
     const handleChange = ({currentTarget:input}) => {
         setData({...data, [input.name]: input.value})
@@ -25,16 +29,34 @@ const SignUp = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         try{
-            const url = "http://localhost:8080/api/auth";
+            const url = "http://localhost:8080/api/users";
             const {data:res} = await axios.post(url, data);
-            localStorage.setItem("token", res.data);
-            window.location = "/"
+            navigate("/login")
+            console.log(res.message)
         } catch(error){
             if(error.response && error.response.status >= 400 && error.response.status<=500){
                 setError(error.response.data.message)
             }
         }
     }
+    
+    function handleCallBackResponse(response){
+        console.log("Encoded JWT ID token:" + response.credential)
+        var userObject = jwt_decode(response.credential)
+        console.log(userObject)
+    }
+
+    useEffect(() =>{
+        /*global google*/
+        google.accounts.id.initialize({
+            client_id: "961705657837-p1o38pjlum6s1oj8oirn2282npb0q44j.apps.googleusercontent.com",
+            callback: handleCallBackResponse
+        });
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            { theme: "outline", size: "large"}
+        );
+    },[])
 
   return (
     <Grid container rowSpacing={0}>
@@ -59,6 +81,8 @@ const SignUp = () => {
             </Grid>
             <form onSubmit={handleSubmit}>
                 <TextField onChange={handleChange} id="outlined-basic" variant="outlined" placeholder='Email' fullWidth required style={textFieldStyle}/>
+                <TextField onChange={handleChange} id="outlined-basic" variant="outlined" placeholder='First Name' fullWidth required style={textFieldStyle}/>
+                <TextField onChange={handleChange} id="outlined-basic" variant="outlined" placeholder='Last Name' fullWidth required style={textFieldStyle}/>
                 <TextField onChange={handleChange} id="outlined-basic" variant="outlined" placeholder='Password' fullWidth required style={textFieldStyle}/>
                 
                 <FormControlLabel
@@ -82,10 +106,16 @@ const SignUp = () => {
                     }}
                     fullWidth required>
                         <Link to="/login"  >
-                            Login 
+                            Sign Up for new Account
                         </Link>
                 </Button>
             </form>
+                <Grid sx={{
+                        width: "100%",
+                        marginTop: 3
+                        }}>
+                    <div id="signInDiv" ></div>
+                </Grid>
         </Paper>
     </Grid>
   )
