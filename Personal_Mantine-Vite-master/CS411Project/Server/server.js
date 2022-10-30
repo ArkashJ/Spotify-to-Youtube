@@ -11,3 +11,5 @@ app.listen(port, () =>{
 })
 
 app.use(express.static('public'))
+
+// use absolute path for other directories
