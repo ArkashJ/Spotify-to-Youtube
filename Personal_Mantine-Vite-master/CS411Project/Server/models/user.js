@@ -8,13 +8,11 @@ const userSchema = new mongoose.Schema({
     name:{type:String, required: true},
     email:{type:String, required: true},
     password:{type:String, required: true},
-    likedSongs: {type: String},
-    token:{type:String}
 })
 
 userSchema.methods.generateAuthToken = function(){
     const token = jwt.sign(
-        {_id: this._id, name: this.name, isAdmin: this.isAdmin},
+        {_id: this._id},
         process.env.JWTPRIVATEKEY,
         {expiresIn: "1h"}
     )
@@ -23,9 +21,9 @@ userSchema.methods.generateAuthToken = function(){
 
 const validate = (user) => {
     const schema = PassJ.object({
-        name: PassJ.string().min(5).max(20).required(),
-        email: PassJ.string().email().required(),
-        password: passwordComplexity().required(),
+        name: PassJ.string().min(5).max(20).required().label("Full Name"),
+        email: PassJ.string().email().required().label("Email"),
+        password: passwordComplexity().required().label("Password"),
     })
     return schema.validate(user)
 }
