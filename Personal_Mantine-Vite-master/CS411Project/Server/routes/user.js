@@ -2,8 +2,6 @@ const bycrypt = require("bcrypt")
 const {User, validate} = require("../models/user");
 const router = require("express").Router();
 
-module.exports = router;
-
 router.post("/", async(req,res) => {
     try{
         const {error} = validate(req.body)
@@ -23,5 +21,4 @@ router.post("/", async(req,res) => {
     }
 })
 
-
-
+module.exports = router;
