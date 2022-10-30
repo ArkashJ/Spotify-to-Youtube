@@ -7,6 +7,9 @@ require("dotenv").config()
 const port = process.env.PORT || 8080
 connection()
 
+app.use(express.json());
+app.use(cors());
+
 app.get("/", (req, res) => {
     res.send("hello world")
 })

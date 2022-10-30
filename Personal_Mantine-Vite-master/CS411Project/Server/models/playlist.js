@@ -15,6 +15,8 @@ const validate = (playlist) =>{
         user: PassJ.string().required(),
         songs: PassJ.array.items(PassJ.string())
     })
+    return schema.validate(playlist)
 }
 
 const Playlist = mongoose.model("playlist", playlistSchema)
+module.exports = {Playlist, validate}
