@@ -21,7 +21,9 @@
     "joi": "^17.6.4",
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.7.0"
+    "mongoose": "^6.7.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-spotify": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

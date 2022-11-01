@@ -16,6 +16,7 @@ router.post("/", async(req,res) => {
         const hashPassword = await bycrypt.hash(req.body.password, salt)
         await newUser({...req.body, password:hashPassword}).save();
         res.status(201).send({message: "user created successfully"})
+        
     } catch (error){
         res.status(500).send({message:"internal server error"})
     }

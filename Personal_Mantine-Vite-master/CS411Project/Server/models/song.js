@@ -8,8 +8,8 @@ const songSchema = new mongoose.Schema({
 
 const validate = (song) => {
     const schema = PassJ.object({
-        name: PassJ.string().required(),
-        artist: PassJ.string.required()
+        name    : PassJ.string().required(),
+        artist  : PassJ.string().required()
     })
     return schema.validate(song)
 }

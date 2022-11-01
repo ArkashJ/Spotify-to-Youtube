@@ -5,9 +5,10 @@ const passwordComplexity = require("joi-password-complexity");
 
  
 const userSchema = new mongoose.Schema({
-    name:{type:String, required: true},
-    email:{type:String, required: true},
-    password:{type:String, required: true},
+    firstName   :   {type:String, required: true},
+    lastName    :   {type:String, required: true},
+    email       :   {type:String, required: true},
+    password    :   {type:String, required: true},
 })
 
 userSchema.methods.generateAuthToken = function(){
@@ -21,12 +22,13 @@ userSchema.methods.generateAuthToken = function(){
 
 const validate = (user) => {
     const schema = PassJ.object({
-        name: PassJ.string().min(5).max(20).required().label("Full Name"),
-        email: PassJ.string().email().required().label("Email"),
-        password: passwordComplexity().required().label("Password"),
+        firstName   : PassJ.string().min(5).max(20).required().label("First Name"),
+        lastName    : PassJ.string().min(5).max(20).required().label("Last Name"),
+        email       : PassJ.string().email().required().label("Email"),
+        password    : passwordComplexity().required().label("Password"),
     })
     return schema.validate(user)
 }
 
-const User = mongoose.model("user", userSchema)
-module.exports = {User, validate}
+const User      = mongoose.model("user", userSchema)
+module.exports  = {User, validate}
