@@ -46,17 +46,17 @@ const SignUp = () => {
         console.log(userObject)
     }
 
-    useEffect(() =>{
-        /*global google*/
-        google.accounts.id.initialize({
-            client_id: "961705657837-p1o38pjlum6s1oj8oirn2282npb0q44j.apps.googleusercontent.com",
-            callback: handleCallBackResponse
-        });
-        google.accounts.id.renderButton(
-            document.getElementById("signInDiv"),
-            { theme: "outline", size: "large"}
-        );
-    },[])
+    // useEffect(() =>{
+    //     /*global google*/
+    //     google.accounts.id.initialize({
+    //         client_id: "961705657837-p1o38pjlum6s1oj8oirn2282npb0q44j.apps.googleusercontent.com",
+    //         callback: handleCallBackResponse
+    //     });
+    //     google.accounts.id.renderButton(
+    //         document.getElementById("signInDiv"),
+    //         { theme: "outline", size: "large"}
+    //     );
+    // },[])
 
   return (
     <Grid container rowSpacing={0}>
@@ -110,12 +110,6 @@ const SignUp = () => {
                         </Link>
                 </Button>
             </form>
-                <Grid sx={{
-                        width: "100%",
-                        marginTop: 3
-                        }}>
-                    <div id="signInDiv" ></div>
-                </Grid>
         </Paper>
     </Grid>
   )
