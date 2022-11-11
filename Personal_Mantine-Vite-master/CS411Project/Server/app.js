@@ -1,8 +1,8 @@
-const express       = require("express")
-const app           = express()
-const connnection   = require("./db")
-const cors          = require("cors")
-const routes        = require("./routes/routes")
+const express     = require("express")
+const app         = express()
+const connnection = require("./db")
+const cors        = require("cors")
+const routes      = require("./routes/routes")
 
 require("dotenv").config()
 const port = process.env.PORT || 8080

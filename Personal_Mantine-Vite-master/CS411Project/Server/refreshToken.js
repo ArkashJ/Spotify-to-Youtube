@@ -65,5 +65,3 @@ async function getPlaylistTracks(playlistId, playlistName) {
 }
 
 getMyData();
-// const value = JSON.stringify(getMyData());
-// console.log(value)
