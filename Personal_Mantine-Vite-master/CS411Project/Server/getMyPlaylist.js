@@ -55,7 +55,9 @@ app.get('/callback', (req, res) => {
       const refresh_token = data.body['refresh_token'];
       const expires_in = data.body['expires_in'];
 
-      fs.writeFileSync("token.json", access_token);
+      const save_token = JSON.stringify(access_token)
+      fs.writeFileSync("token.json", save_token);
+      
       spotifyApi.setAccessToken(access_token);
       spotifyApi.setRefreshToken(refresh_token);
 
