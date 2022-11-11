@@ -1,6 +1,7 @@
 const SpotifyWebApi = require('spotify-web-api-node');
 const express = require('express');
 require("dotenv").config()
+const fs = require("fs");
 
 const scopes = [
   'ugc-image-upload',
@@ -46,7 +47,7 @@ app.get('/callback', (req, res) => {
     res.send(`Callback Error: ${error}`);
     return;
   }
-
+  let access_token = [];
   spotifyApi
     .authorizationCodeGrant(code)
     .then(data => {
@@ -54,6 +55,7 @@ app.get('/callback', (req, res) => {
       const refresh_token = data.body['refresh_token'];
       const expires_in = data.body['expires_in'];
 
+      fs.writeFileSync("token.json", access_token);
       spotifyApi.setAccessToken(access_token);
       spotifyApi.setRefreshToken(refresh_token);
 
@@ -79,6 +81,7 @@ app.get('/callback', (req, res) => {
       res.send(`Error getting Tokens: ${error}`);
     });
 });
+
 
 app.listen(8888, () =>
   console.log(

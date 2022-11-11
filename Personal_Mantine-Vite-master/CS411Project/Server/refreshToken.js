@@ -1,6 +1,10 @@
 const fs = require('fs')
 const SpotifyWebApi = require('spotify-web-api-node');
-const token = "BQDVHzLdyz-fxC-ETyMOMyCOMD1GqNJN4nO53D0DrHIlYkCqe2PekMf7D0OsZXwEdW4LlZRvanVhefMMzP2ixDh6qlUsLeQXE9_ljnAzMhkEh6mYH3DmkoN3WC_qp4lERWNB9xTVF4AqxzLz84TmZTIXvWlfJmKn2EK5dYYKBUR8Tz4ETmr1C8o2SHyQIko8izm9VEKsBOJv4MKPiS25DWwWGqbaTACBr36XHKUNnMGUC0eLd2T5hkD-irKHY4lfbB31eObVnFoJjy8g6coZKPK1pwPsRNIRIbsS89Ux9NCtbKnbtGdSz50tPIODechgNh8ZCy8KpYnD99hxhwPam2B4";
+
+const TOKEN = require("./token.json");
+
+const token = TOKEN;
+console.log(token)
 
 const spotifyApi = new SpotifyWebApi();
 spotifyApi.setAccessToken(token);
@@ -21,7 +25,7 @@ async function getUserPlaylists(userName) {
   const data = await spotifyApi.getUserPlaylists(userName)
 
   console.log("---------------+++++++++++++++++++++++++")
-  let playlists = []
+  let playlist = []
 
   for (let playlist of data.body.items) {
     console.log(playlist.name + " " + playlist.id)
