@@ -1,0 +1,16 @@
+const playlist = require("./Casual Playlist.json")
+//console.log(playlist)
+//console.log(playlist.tracks)
+var GenerateSchema = require('generate-schema')
+
+for (let playlists of playlist.tracks){
+    var schema = GenerateSchema.mongoose(playlist.tracks)
+    tracks.create(schema)
+}
+
+
+
+var GenerateSchema = require('generate-schema')
+
+// var schema = GenerateSchema.mongoose(playlist.tracks)
+// console.log(schema)
