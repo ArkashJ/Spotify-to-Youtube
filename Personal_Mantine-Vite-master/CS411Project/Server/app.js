@@ -29,7 +29,7 @@ console.log(playlist)
 const importData = () => {
     try { 
         for (let playlists of playlist.tracks){
-            var schema = GenerateSchema.mongoose(playlist.tracks)
+            var schema = GenerateSchema.mongoose(playlists.tracks)
             tracks.create(schema)
         }
         console.log('data successfully imported')
