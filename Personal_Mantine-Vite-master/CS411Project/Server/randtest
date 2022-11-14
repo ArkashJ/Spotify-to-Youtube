@@ -4,6 +4,27 @@ console.log(playlist.tracks[0].name)
 console.log(playlist.tracks[0].album.name)
 console.log(playlist.tracks[0].album.id)
 console.log(playlist.tracks[0].album.artists[0].name)
+
+var dict = {
+    "duration"  : [],
+    "songName"  : [],
+    "albumName" : [],
+    "albumId"   : [],
+    "artist"    : []
+}
+
+console.log(dict.duration.push(1))
+for (let i = 0; i < playlist.tracks.length; i++) {
+
+    dict.duration.push(playlist.tracks[i].duration_ms)
+    // console.log(playlist.tracks[i].duration_ms)
+    // console.log(playlist.tracks[i].name)
+    // console.log(playlist.tracks[i].album.name)
+    // console.log(playlist.tracks[i].album.id)
+    // console.log(playlist.tracks[i].album.artists[0].name)
+}
+
+
 //console.log(playlist)
 //console.log(playlist.tracks)
 
