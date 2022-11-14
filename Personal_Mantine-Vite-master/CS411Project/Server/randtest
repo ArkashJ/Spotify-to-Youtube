@@ -1,35 +1,25 @@
 const playlist = require("./Casual Playlist.json")
+console.log(playlist.tracks[0].duration_ms)
+console.log(playlist.tracks[0].name)
+console.log(playlist.tracks[0].album.name)
+console.log(playlist.tracks[0].album.id)
+console.log(playlist.tracks[0].album.artists[0].name)
 //console.log(playlist)
 //console.log(playlist.tracks)
 
-var GenerateSchema = require('generate-schema')
-var schema = GenerateSchema.mongoose(playlist.tracks)
-// console.log(typeof schema)
-// console.log(schema)
-var goodSchema = {};
-//goodSchema[0] = schema[0]
-
-goodSchema["id"] = schema[0].id
-goodSchema["name"] = schema[0].name
-goodSchema["artist"]
-console.log(goodSchema)
-
-console.log(schema[0].album.album_type)
-//console.log(goodSchema.)
-
-// console.log(schema[0])
-
-// for (let id in schema){
-//     console.log(id +""+schema[id])
-// }
-// for (let playlists of playlist.tracks){
-//     var schema = GenerateSchema.mongoose(playlists.tracks)
-//     console.log(schema)
-// }
-
-
-
-
-
+// var GenerateSchema = require('generate-schema')
 // var schema = GenerateSchema.mongoose(playlist.tracks)
 // console.log(schema)
+// // console.log(typeof schema)
+// // console.log(schema)
+// var goodSchema = {};
+// //goodSchema[0] = schema[0]
+
+// goodSchema["id"] = schema[0].id
+// goodSchema["name"] = schema[0].name
+
+// console.log(goodSchema)
+
+// console.log(schema[0].album.album_type)
+// //console.log(goodSchema.)
+
