@@ -1,9 +1,13 @@
 const express     = require("express")
 const app         = express()
-const connnection = require("./db")
+
 const cors        = require("cors")
+
+const connnection = require("./db")
 const tracks      = require("./models/track")
 const playlist    = require("./Casual Playlist.json")
+
+const routes = require("./routes/routes")
 
 require("dotenv").config()
 const port = process.env.PORT || 8081
@@ -11,7 +15,7 @@ const port = process.env.PORT || 8081
 app.use(express.json());
 app.use(cors());
 
-// app.use('/api', routes)
+app.use('/api', routes)
 
 app.get('/', (req, res) => {
     res.send("hello world! Kashing out");
