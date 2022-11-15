@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import DisplaySongs from './components/MainPage/DisplaySongs';
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <DisplaySongs/>
+    </div>
   )
 }
 
