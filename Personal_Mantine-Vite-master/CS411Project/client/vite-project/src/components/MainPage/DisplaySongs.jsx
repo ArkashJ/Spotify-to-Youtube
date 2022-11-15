@@ -13,11 +13,25 @@ export default function DisplaySongs() {
   }, []);
 
   if (!post) return null;
-
+    let data = post.map((item) => {
+        return (
+            <tr key = {item.id}>
+                <td>{item.duration}</td>
+                <td>{item.songName}</td>
+                <td>{item.albumName}</td>
+                <td>{item.artist}</td>
+                <td>{item.albumId}</td>
+            </tr>
+        )
+    })
   return (
+    
     <div>
-      <h1>{post[0].duration}</h1>
-      <p>{post[0].songName}</p>
+        <table>
+            <tbody>
+                {data}
+            </tbody>
+        </table>
     </div>
   );
 }
