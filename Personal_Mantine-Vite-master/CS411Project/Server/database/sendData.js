@@ -1,29 +1,5 @@
-const express     = require("express")
-const app         = express()
-
-const cors        = require("cors")
-
-const connnection = require("./database/db")
-const tracks      = require("./models/track")
-const playlist    = require("./Casual Playlist.json")
-
-const routes = require("./routes/routes")
-
-require("dotenv").config()
-const port = process.env.PORT || 8081
-
-app.use(express.json());
-app.use(cors());
-
-app.use('/api', routes)
-
-app.get('/', (req, res) => {
-    res.send("hello world! Kashing out");
-})
-
-connnection();
-
-app.listen(port, () => console.log(`listening on port ${port}`));
+const tracks      = require("../models/track")
+const playlist    = require("../Casual Playlist.json")
 
 const importData = async () => {
     try{
@@ -43,4 +19,5 @@ const importData = async () => {
         console.log('error sending data')
     }
 }
+
 importData();
