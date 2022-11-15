@@ -1,5 +1,5 @@
 const tracks      = require("../models/track");
-const playlist    = require("../Casual Playlist.json");
+const playlist    = require("../SpotifyLogin/Casual Playlist.json");
 const connnection = require("./db")
 require("dotenv").config()
 connnection();
