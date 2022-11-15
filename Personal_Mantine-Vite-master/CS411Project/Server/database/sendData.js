@@ -1,5 +1,8 @@
-const tracks      = require("../models/track")
-const playlist    = require("../Casual Playlist.json")
+const tracks      = require("../models/track");
+const playlist    = require("../Casual Playlist.json");
+const connnection = require("./db")
+require("dotenv").config()
+connnection();
 
 const importData = async () => {
     try{
@@ -11,7 +14,7 @@ const importData = async () => {
                 albumId     : (playlist.tracks[i].album.id),
                 artist      : (playlist.tracks[i].album.artists[0].name)
             }, function (err, small){
-                if (err) {return handleError(err)}
+                if (err) {return err}
             })
         }
         await console.log("data transfer successful")
