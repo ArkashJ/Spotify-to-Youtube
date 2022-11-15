@@ -3,7 +3,7 @@ const app         = express()
 
 const cors        = require("cors")
 
-const connnection = require("./db")
+const connnection = require("./database/db")
 const tracks      = require("./models/track")
 const playlist    = require("./Casual Playlist.json")
 

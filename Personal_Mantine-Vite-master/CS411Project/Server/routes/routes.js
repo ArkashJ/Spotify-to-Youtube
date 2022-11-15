@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const tracks = require("../models/track")
 
-router.post('/getAll', async (req, res) => {
+router.get('/getAll', async (req, res) => {
     try{
         const data = await tracks.find()
         res.json(data)
@@ -11,5 +11,5 @@ router.post('/getAll', async (req, res) => {
     }
 })
 
-module.exports = router
+module.exports = router;
 
