@@ -1,11 +1,7 @@
 const playlist = require("./Casual Playlist.json")
-console.log(playlist.tracks[0].duration_ms)
-console.log(playlist.tracks[0].name)
-console.log(playlist.tracks[0].album.name)
-console.log(playlist.tracks[0].album.id)
-console.log(playlist.tracks[0].album.artists[0].name)
+// var fs = require('fs');
 
-var dict = {
+ var dict = {
     "duration"  : [],
     "songName"  : [],
     "albumName" : [],
@@ -13,24 +9,29 @@ var dict = {
     "artist"    : []
 }
 
-console.log(dict.duration.push(1))
 for (let i = 0; i < playlist.tracks.length; i++) {
 
-    dict.duration.push(playlist.tracks[i].duration_ms)
-    // console.log(playlist.tracks[i].duration_ms)
-    // console.log(playlist.tracks[i].name)
-    // console.log(playlist.tracks[i].album.name)
-    // console.log(playlist.tracks[i].album.id)
-    // console.log(playlist.tracks[i].album.artists[0].name)
+    dict.duration.push(parseFloat((playlist.tracks[i].duration_ms/60000).toFixed(2)))
+    dict.songName.push(playlist.tracks[i].name)
+    dict.albumName.push(playlist.tracks[i].album.name)
+    dict.albumId.push(playlist.tracks[i].album.id)
+    dict.artist.push(playlist.tracks[i].album.artists[0].name)
 }
 
+// var dictString = JSON.stringify(dict)
+// fs.writeFile("songs.json", dictString, function(err, result){
+//     if (err) console.log('error',err)
+// })
 
+// const newWork = require('./songs.json');
+// console.log(newWork.length)
 //console.log(playlist)
 //console.log(playlist.tracks)
 
 // var GenerateSchema = require('generate-schema')
-// var schema = GenerateSchema.mongoose(playlist.tracks)
+// var schema = GenerateSchema.mongoose(dict)
 // console.log(schema)
+
 // // console.log(typeof schema)
 // // console.log(schema)
 // var goodSchema = {};
