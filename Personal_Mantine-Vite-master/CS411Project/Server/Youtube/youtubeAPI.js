@@ -19,5 +19,7 @@ url = "https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&key=KEY"
 
 url2 =  'https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&key=[YOUR_API_KEY]'
 
+// login to youtube, store token, make a playlist, look up the song and post the song to it
+
 
 
