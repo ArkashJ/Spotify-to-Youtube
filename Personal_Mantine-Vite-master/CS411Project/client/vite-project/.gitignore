@@ -27,3 +27,4 @@ node_modules
 index.html
 *.json
 vite.config.js
+.env
