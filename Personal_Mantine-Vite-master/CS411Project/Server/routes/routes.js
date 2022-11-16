@@ -11,6 +11,14 @@ router.get('/getAll', async (req, res) => {
     }
 })
 
+router.get('/playlist', async(req, res) => {
+    try {
+        url = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=Stay%20%by%20Justin%20Beiber&key=AIzaSyAWaNEFxGZYD1p33C6T_tlNvq4Jxs8Np2g"
+    } catch (error){
+        res.status(500).json({message: error.message})
+    }
+})
+
 router.get('/getOne/:id', async (req, res) => {
     try {
         const data = await tracks.findById(req.params.id);
