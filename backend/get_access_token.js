@@ -15,7 +15,7 @@
  */
  var SpotifyWebApi = require('spotify-web-api-node');
  const express = require('express');
- 
+ const fs = require('fs')
  
  const scopes = [
    'ugc-image-upload',
@@ -63,6 +63,7 @@
      return;
    }
  
+   
    spotifyApi
      .authorizationCodeGrant(code)
      .then(data => {
@@ -71,7 +72,8 @@
        const expires_in = data.body['expires_in'];
 
        // save the token for use in other files
-       token = access_token
+       
+       const save_token = JSON.stringify(access_token);
  
        spotifyApi.setAccessToken(access_token);
        spotifyApi.setRefreshToken(refresh_token);

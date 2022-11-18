@@ -1,11 +1,15 @@
 const fs = require('fs')
-const SpotifyWebApi = require('spotify-web-api-node');
-const token = 'BQCig9dK9qZgRVVPdaln0ibonfM1WEkJjOUu2Ys_dJaBIiOGpAJ11760ImS3Zh6WaDPO0AUSWqSH5-xVDq_NKpuV7gmlYPN_rwegP73P8JG_xG3Fr6DHbVs4s-8HanEZniitAGq690JJEzBaS6_uqQcUKn2cwMDTtIbf3USOH211qL4XSnDyPJq1CcY8dBdzFWBIFHY5nZViTXT9-wUCaWG6u2bLvRW3oNEYuIu1jCwEq3lZp9oUIh5RtF3nmScdGSHJjJeQ_RyRAjPIBf0-d7bfzSInwIiCp8wek4KZm39zyKGLnuZneWg73a0W91eO4M0ruSmwG8VdkWWJmKyT';
-console.log(token)
+const SpotifyWebApi = require('spotify-web-api-node')
+
+import token from "./token.json" assert {type: json}
+
+console.log(token);
+
 
 const spotifyApi = new SpotifyWebApi();
-spotifyApi.setAccessToken(token);
+spotifyApi.setAccessToken(access_token);
 
+/*
 //GET MY PROFILE DATA
 function getMyData() {
   (async () => {
@@ -60,4 +64,4 @@ async function getPlaylistTracks(playlistId, playlistName) {
   return tracks;
 }
 
-getMyData();
+getMyData();*/
