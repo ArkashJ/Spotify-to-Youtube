@@ -7,7 +7,7 @@ module.exports = async() =>{
     }
     try{
         await mongoose.connect(process.env.DB, connectionParams);
-        console.log("connected to databse successfully")
+        console.log("connected to database successfully")
     } catch (error){
         console.log("error in loading database")
     }

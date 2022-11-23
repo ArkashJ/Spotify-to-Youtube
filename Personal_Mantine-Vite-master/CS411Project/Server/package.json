@@ -22,6 +22,8 @@
     "express-session": "^1.17.3",
     "express-sessions": "^1.0.1",
     "generate-schema": "^2.6.0",
+    "google-auth-library": "^8.7.0",
+    "googleapis": "^109.0.1",
     "joi": "^17.6.4",
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^8.5.1",

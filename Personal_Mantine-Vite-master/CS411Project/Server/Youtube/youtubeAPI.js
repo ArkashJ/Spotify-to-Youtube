@@ -1,3 +1,12 @@
+const {google} = require('googleapis');
+require('dotenv').config();
+
+google.youtube('v3').search.list({
+    key: process.env.YOUTUBE,
+    part: 'snippet'
+    q: ''
+})
+
 // Code to look up songs
 
 router.get('/playlist', async(req, res) => {
