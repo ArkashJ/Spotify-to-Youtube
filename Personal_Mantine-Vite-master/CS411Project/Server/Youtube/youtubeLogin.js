@@ -16,5 +16,21 @@ function initClient() {
         'clientId'      : YOUTUBE_Data.clientId,
         'scope'         : scopes, 
         'discoveryDocs' : ['https://www.googleapis.com/youtube/v3/playlists', 'https://www.googleapis.com/youtube/v3/search' ]
-    })
+    }).then(function () {
+        GoogleAuth = gapi.auth2.getAuthInstance();
+  
+        // Listen for sign-in state changes.
+        GoogleAuth.isSignedIn.listen(updateSigninStatus);
+    });
+}
+
+var isAuthorized;
+var currentApiRequest;
+
+function sendAuthorizedApiRequest(requestDetails) {
+    currentApiRequest = requestDetails;
+    if (isAuthorized){
+        gapi.client.request(requestDetails);
+        currentApiRequest = {}
+    }
 }
