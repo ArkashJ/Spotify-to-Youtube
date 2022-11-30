@@ -30,7 +30,20 @@ var currentApiRequest;
 function sendAuthorizedApiRequest(requestDetails) {
     currentApiRequest = requestDetails;
     if (isAuthorized){
-        gapi.client.request(requestDetails);
+        gapi.client.request(requestDetails); 
         currentApiRequest = {}
+    }   else {
+        GoogleAuth.signIn()
+    }
+}
+
+function updateSigninStatus (isSignedIn) {
+    if (isSignedIn){
+        isAuthorized = true;
+        if (currentApiRequest){
+            sendAuthorizedApiRequest(currentApiRequest);
+        }
+    } else {
+        isAuthorized = false
     }
 }
