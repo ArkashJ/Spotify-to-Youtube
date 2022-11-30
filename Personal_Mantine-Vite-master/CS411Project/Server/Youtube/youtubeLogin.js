@@ -47,3 +47,5 @@ function updateSigninStatus (isSignedIn) {
         isAuthorized = false
     }
 }
+
+//deprecated
