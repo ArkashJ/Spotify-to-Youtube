@@ -3,9 +3,15 @@ require('dotenv').config();
 
 google.youtube('v3').search.list({
     key: process.env.YOUTUBE,
-    part: 'snippet'
-    q: ''
-})
+    part: 'snippet',
+    q: 'Lil Nas X Holiday',
+    maxResults: 5
+}).then((response)=>{
+   const {data} = response;
+   data.items.forEach((item)=>{
+    console.log(`Title: ${item.snippet.title}\nDescription: ${item.snippet.description}\n`)
+   })
+}).catch((err)=>console.log(err))
 
 // Code to look up songs
 
