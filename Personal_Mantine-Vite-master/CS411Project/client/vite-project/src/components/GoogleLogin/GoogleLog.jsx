@@ -1,4 +1,4 @@
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import {useEffect, useState} from "react";
 
@@ -10,7 +10,7 @@ function GoogleLog() {
     const initClient = () => {
         gapi.client.init({
             clientId: clientId,
-            scope   : ''
+            scope   : 'https://www.googleapis.com/auth/youtube'
         });
     };
     gapi.load('client:auth2', initClient);
