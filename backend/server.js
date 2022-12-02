@@ -22,22 +22,23 @@ app.get("/search", async (request, response, next) => {
   const searchQuery = request.query.search_query;
   const url = `${firstPartOfURL}/search?key=${APIkey}&type=video&part=snippet&q=${searchQuery}`;
   const searchResponse = await axios.get(url);
-  const titles = searchResponse.data.items.map((item) => item.snippet.title);
+  const IDs = searchResponse.data.items.map((item) => item.id.videoId);
   // check what we are getting back
-  response.send(titles);
+  response.send(IDs[0]);
   console.log("searched for", searchQuery);
   } catch (err) {
     next(err)
   }
 });
 
+/*
 const Artists = ["Tool", "Three Days Grace", "Metallica"]
 const Songs = ["Lateralus", "Drown", "Enter Sandman"]
 
 for (let i = 0; i < Artists.length; i++) {
   Request = Artists[i] + " " + Songs[i];
-  console.log(Request);
-};
+  app.get("/search", ())
+}; */
 
 app.listen(port, () => {
   console.log("app started successfully");
