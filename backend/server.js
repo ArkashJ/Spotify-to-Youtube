@@ -18,11 +18,12 @@ app.get("/", (request, response) => {
 
 app.get("/search", async (request, response) => {
   const searchQuery = request.query.search_query;
-  const url = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyDgPCmpEvEZBkeEqVvliN0g_ZkqRWzfe4c&type=video&part=snippet&q=foo`;
+  const url = `${firstPartOfURL}/search?key=${APIkey}&type=video&part=snippet&q=${searchQuery}`;
   const searchResponse = await axios.get(url);
+  const titles = searchResponse.data.items.map((item) => item.snippet.title);
   // check what we are getting back
-  console.log(searchResponse);
-  response.send("look at the console")
+  response.send(titles);
+  console.log("searched for", searchQuery);
 });
 
 app.listen(port, () => {
