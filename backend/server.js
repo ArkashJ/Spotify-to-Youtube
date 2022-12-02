@@ -21,8 +21,9 @@ app.get("/search", async (request, response) => {
   const url = `${firstPartOfURL}/search?key=${APIkey}&type=video&part=snippet&q=${searchQuery}`;
   const searchResponse = await axios.get(url);
   // check what we are getting back
+  response.send("i guess");
   console.log("response:", searchResponse);
-})
+});
 
 app.listen(port, () => {
   console.log("app started successfully");
