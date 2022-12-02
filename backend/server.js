@@ -1,12 +1,15 @@
 /* Load the HTTP library */
 var http = require('http');
 
-/* Create an HTTP server to handle responses */
+const express = require("express");
+const { response } = require('express');
+const app = express();
+const port = 8800;
 
-http
-  .createServer(function(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.write('Hello World');
-    response.end();
-  })
-  .listen(8888);
+app.get("/", (request, response) => {
+  response.send("testing home page");
+});
+
+app.listen(port, () => {
+  console.log("app started successfully");
+});
