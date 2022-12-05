@@ -1,3 +1,18 @@
-var passport = require('passport');
-var Profile = require('passport-google-oauth20').Profile;
-var Strategy    =  require('passport-google-oauth20').GoogleStrategy;
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID         : process.env.GOOGLE_CLIENT_ID,
+    clientSecret     : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL      : "http://www.example.com/auth/google/callback",
+    passReqToCallback: true,
+    scope            : [
+        'email',
+        'profile',
+        'https://www.googleapis.com/auth/youtube',
+        'https://www.googleapis.com/auth/youtube.force-ssl',
+      ],
+  },
+  function(request, accessToken, refreshToken, profile, cb) {
+    return cb(err, profile);
+  }
+));
