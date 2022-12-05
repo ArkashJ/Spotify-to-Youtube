@@ -13,6 +13,7 @@ passport.use(new GoogleStrategy({
         'https://www.googleapis.com/auth/youtube',
         'https://www.googleapis.com/auth/youtube.force-ssl',
       ],
+      proxy: true
   },
   function(request, accessToken, refreshToken, profile, cb) {
     return cb(err, profile);

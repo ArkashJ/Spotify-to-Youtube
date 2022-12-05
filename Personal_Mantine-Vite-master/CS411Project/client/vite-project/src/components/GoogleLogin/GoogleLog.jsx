@@ -10,7 +10,7 @@ function GoogleLog() {
     const initClient = () => {
         gapi.client.init({
             clientId: clientId,
-            scope   : 'https://www.googleapis.com/auth/youtube'
+            scope   : 'https://www.googleapis.com/auth/youtube.force-ssl'
         });
     };
     gapi.load('client:auth2', initClient);
