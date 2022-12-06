@@ -42,17 +42,13 @@ export default function DisplaySongs() {
 
     let songsList = []
     rows.map((item) => songsList.push(item.songName) )
-    console.log(songsList)
+    const final = {'songs': songsList};
 
-   const sendToYoutube = (songsList) => {
-    // console.log("clicked");
-    // const songsArray = ['hello', 'fellas in paris'] 
-    // console.log('hello');
-    const Sendsongs = {'songs': songsList}
-    // console.log('hello 2');
+
+   const sendToYoutube = () => {
     axios
-      .post('http://localhost:5001/api/playlist', Sendsongs)
-      // .then(res => console.log(res))
+      .post('http://localhost:5001/api/playlist', final)
+      .then(res => console.log(res))
     // console.log('hello 3');
   }
 
