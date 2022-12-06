@@ -7,13 +7,11 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import ErrorPage from './ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
-    errorElement: <ErrorPage/>
   },
 ]);
 

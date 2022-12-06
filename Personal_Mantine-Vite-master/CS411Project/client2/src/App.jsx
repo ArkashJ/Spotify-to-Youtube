@@ -8,8 +8,7 @@ function App() {
 
   return (
     <div className="App" id="mainBody">
-      <SignUp/>
-      <DisplaySongs/>
+      <MainPage/>
     </div>
   )
 }
