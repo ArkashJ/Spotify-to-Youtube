@@ -3,6 +3,9 @@ const app         = express()
 const connnection = require("./database/db")
 const routes      = require("./routes/routes")
 const playlists   = require('./routes/playlists')
+const cors = require('cors')
+
+app.use(cors())
 require('./google');
 
 var passport = require('passport')
@@ -18,12 +21,9 @@ app.use('/playlist', playlists)
 connnection();
 
 app.get('/', (req, res) => {
-    res.send('<a href="auth/google">Autheticate with Google</a>');
+    res.send('Kashing out');
 })
 
-app.get('/auth/google',
-    passport.authenticate('google', { scope: ['email', 'profile', 'https://www.googleapis.com/auth/youtube',
-    'https://www.googleapis.com/auth/youtube.force-ssl']})
-)
+
 
 app.listen(port, () => console.log(`listening on port ${port}`));

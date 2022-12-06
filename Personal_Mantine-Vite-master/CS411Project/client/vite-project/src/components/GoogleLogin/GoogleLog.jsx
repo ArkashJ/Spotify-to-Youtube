@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 
 function GoogleLog() {
     const [profile, setProfile] = useState([]);
-    const clientId = "489746260370-afitsmlclo3gpg0vt58dmpfjf8koviaq.apps.googleusercontent.com";
+    const clientId = "629352991342-sm6egvo5pue13traproc7p61dujannoc.apps.googleusercontent.com";
     useEffect(() => {
     const initClient = () => {
         gapi.client.init({
