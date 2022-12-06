@@ -26,7 +26,6 @@ export default function DisplaySongs() {
   if (!post) return null;
 
   let rows = [];
-
     post.map((item, index) => {
         rows.push(
               {
@@ -38,19 +37,23 @@ export default function DisplaySongs() {
                 key       : index
               }
                )
+        
     })
 
+    let songsList = []
+    rows.map((item) => songsList.push(item.songName) )
+    console.log(songsList)
 
-   const sendToYoutube = (songs) => {
-    console.log("clicked");
-    const songsArray = songs
-    console.log('hello');
-    const Sendsongs = {'songs': songsArray}
-    console.log('hello 2');
+   const sendToYoutube = (songsList) => {
+    // console.log("clicked");
+    // const songsArray = ['hello', 'fellas in paris'] 
+    // console.log('hello');
+    const Sendsongs = {'songs': songsList}
+    // console.log('hello 2');
     axios
       .post('http://localhost:5001/api/playlist', Sendsongs)
-      .then(res => console.log(res))
-    console.log('hello 3');
+      // .then(res => console.log(res))
+    // console.log('hello 3');
   }
 
   return (
@@ -59,7 +62,7 @@ export default function DisplaySongs() {
         <DataGrid
           rows={rows}
           columns={columns}
-          pageSize={rows.length}
+          pageSize={10}
           rowsPerPageOptions={[10]}
           checkboxSelection
           onSelectionModelChange={(newSelection) => {
