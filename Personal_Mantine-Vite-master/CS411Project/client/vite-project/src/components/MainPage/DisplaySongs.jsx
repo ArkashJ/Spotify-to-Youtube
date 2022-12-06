@@ -53,12 +53,14 @@ export default function DisplaySongs() {
   return (
     <div>
       <div style={{ height: 800, width: '100%' }}>
+        <h1>{songs.map((song) => song.songName)}</h1>
         <DataGrid
           rows={rows}
           columns={columns}
           pageSize={rows.length}
           rowsPerPageOptions={[10]}
           checkboxSelection
+          onSelectionModelChange
         />
       </div>
       <Button variant="contained" onClick={sendToYoutube}>Transfer</Button>
