@@ -15,7 +15,7 @@ const columns = [
 
 export default function DisplaySongs() {
   const [post, setPost] = React.useState(null);
-  const [songs, setSongs] = React.useState([]);
+  const [selectionModel, setSelectionModel] = React.useState([]);
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
@@ -27,20 +27,23 @@ export default function DisplaySongs() {
 
   let rows = [];
 
-    post.map((item) => {
+    post.map((item, index) => {
         rows.push(
               {
                 id        : item.albumId,
                 duration  : item.duration,
                 songName  : item.songName,
                 albumName : item.albumName,
-                artist    : item.artist
-              })
+                artist    : item.artist,
+                key       : index
+              }
+               )
     })
 
-   const sendToYoutube = () => {
+
+   const sendToYoutube = (songs) => {
     console.log("clicked");
-    const songsArray = ['hello', 'fellas in paris'] 
+    const songsArray = songs
     console.log('hello');
     const Sendsongs = {'songs': songsArray}
     console.log('hello 2');
@@ -53,16 +56,22 @@ export default function DisplaySongs() {
   return (
     <div>
       <div style={{ height: 800, width: '100%' }}>
-        <h1>{songs.map((song) => song.songName)}</h1>
         <DataGrid
           rows={rows}
           columns={columns}
           pageSize={rows.length}
           rowsPerPageOptions={[10]}
           checkboxSelection
-          onSelectionModelChange
+          onSelectionModelChange={(newSelection) => {
+            setSelectionModel(newSelection.selectionModel);
+          }}
+          selectionModel={selectionModel}
+          getRowId={(row) => row.key}
         />
       </div>
+      {selectionModel && selectionModel.map((val) => (
+        <h1>{val}</h1>
+      ))}
       <Button variant="contained" onClick={sendToYoutube}>Transfer</Button>
     </div>
     
