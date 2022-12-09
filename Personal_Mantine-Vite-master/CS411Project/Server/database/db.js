@@ -10,6 +10,7 @@ module.exports = async() =>{
         console.log("connected to database successfully")
     } catch (error){
         console.log("error in loading database")
+        console.log(error)   
     }
 }
 

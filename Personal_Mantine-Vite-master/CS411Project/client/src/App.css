@@ -1,0 +1,14 @@
+.parent {
+    margin: 0rem;
+    padding: 0rem 0rem;
+    text-align: center;
+  }
+  .child {
+    display: inline-block;
+    padding: 0rem 0rem;
+    vertical-align: middle;
+  }
+.body {
+  margin: 0;
+  padding: 0;
+}

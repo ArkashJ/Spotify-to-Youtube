@@ -3,14 +3,15 @@ import React from "react";
 import {DataGrid} from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 
+
 const baseURL = "http://localhost:8081/api/getAll";
 
 const columns = [
-  { field: 'id',        headerName: 'ID',         width: 70 },
-  { field: 'songName',  headerName: 'Song Name',  width: 230},
+  { field: 'songName',  headerName: 'Title',  width: 230},
   { field: 'artist',    headerName: 'Artist',     width: 130},
-  { field: 'albumName', headerName: 'Album Name', width: 230},
-  { field: 'duration',  headerName: 'Duration',   width: 100, type: 'number'}
+  { field: 'albumName', headerName: 'Album', width: 230},
+  { field: 'duration',  headerName: 'Duration',   width: 100 },
+  { field: 'id',        headerName: 'ID',         width: 215 },
 ]
 
 export default function DisplaySongs() {
@@ -29,12 +30,12 @@ export default function DisplaySongs() {
     post.map((item, index) => {
         rows.push(
               {
-                id        : item.albumId,
                 duration  : item.duration,
                 songName  : item.songName,
                 albumName : item.albumName,
                 artist    : item.artist,
-                key       : index
+                key       : index,
+                id        : item.albumId,
               }
                )
         
@@ -54,7 +55,7 @@ export default function DisplaySongs() {
 
   return (
     <div>
-      <div style={{ height: 800, width: '100%' }}>
+      <div style={{ height: 450, width: '100%' }}>
         <DataGrid
           rows={rows}
           columns={columns}
@@ -66,12 +67,20 @@ export default function DisplaySongs() {
           }}
           selectionModel={selectionModel}
           getRowId={(row) => row.key}
+          sx={{
+            backgroundColor: "#191414",
+            color:"#fff",
+            '& .MuiDataGrid-cell:hover': {
+              color: '#1DB954',
+            },
+            borderColor: "#191414",
+          }} 
         />
       </div>
       {selectionModel && selectionModel.map((val) => (
-        <h1>{val}</h1>
+        <h1 style={{color:"white"}}>{val}</h1>
       ))}
-      <Button variant="contained" onClick={sendToYoutube}>Transfer</Button>
+      <Button variant="contained" onClick={sendToYoutube} style={{backgroundColor:"#1DB954", color: "#191414", fontWeight:700}}>Transfer</Button>
     </div>
     
   );

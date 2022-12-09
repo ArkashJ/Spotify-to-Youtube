@@ -50,12 +50,12 @@ const SignUp = () => {
                         fontWeight      : 'bold',
                         letterSpacing   : 4
                     }}>
-                        Sign Up
+                        Log in
                 </Typography>
                 <Typography
                     sx = {{
                         fontWeight: 'bold'
-                    }}><Button>Already a member? Login</Button></Typography>
+                    }}><Button>Don't have an  account? Sign up</Button></Typography>
             </Grid>
             <form onSubmit={handleSubmit}>
                 <TextField onChange={handleChange} id="outlined-basic" variant="outlined" placeholder='Email' fullWidth required style={textFieldStyle}/>
