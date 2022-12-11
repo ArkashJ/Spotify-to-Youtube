@@ -3,6 +3,8 @@ const express = require('express');
 require("dotenv").config()
 const fs = require("fs");
 
+const loginRoute = express.Router()
+
 
 const scopes = [
   'ugc-image-upload',
@@ -27,19 +29,19 @@ const scopes = [
 ];
 
 const spotifyApi = new SpotifyWebApi({
-  redirectUri: 'http://localhost:8888/callback',
+  redirectUri: 'http://localhost:8081/login/callback',
   clientId: process.env.clientId,
   clientSecret: process.env.clientSecret
 });
 
-const app = express();
 
-app.get('/login', (req, res) => {
+
+loginRoute.get('/', (req, res) => {
   res.redirect(spotifyApi.createAuthorizeURL(scopes));
 });
 
 
-app.get('/callback', (req, res) => {
+loginRoute.get('/callback', (req, res) => {
   const error = req.query.error;
   const code = req.query.code;
   const state = req.query.state;
@@ -70,7 +72,7 @@ app.get('/callback', (req, res) => {
       console.log(
         `Sucessfully retreived access token. Expires in ${expires_in} s.`
       );
-      res.send('Success! You can now close the window.');
+      res.redirect("http://localhost:5173/")
       
       setInterval(async () => {
         const data = await spotifyApi.refreshAccessToken();
@@ -148,9 +150,4 @@ app.get('/callback', (req, res) => {
     });
 });
 
-
-app.listen(8888, () =>
-  console.log(
-    'HTTP Server up. Now go to http://localhost:8888/login in your browser.'
-  )
-);
+module.exports = loginRoute;
