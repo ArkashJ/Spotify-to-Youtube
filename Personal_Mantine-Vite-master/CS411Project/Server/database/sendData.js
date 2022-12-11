@@ -1,9 +1,9 @@
 const tracks      = require("../models/track");
-const playlist    = require("../SpotifyLogin/Casual Playlist.json");
+const playlist    = require("../SpotifyLogin/CasualPlaylist.json")
 const connnection = require("./db")
 require("dotenv").config()
 connnection();
-
+console.log(playlist)
 const importData = async () => {
     try{
         for (let i = 0; i < playlist.tracks.length; i++) {
