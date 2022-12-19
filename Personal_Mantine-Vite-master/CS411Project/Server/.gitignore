@@ -2,3 +2,5 @@
 node_modules
 *.json
 data.js
+
+playlists.js

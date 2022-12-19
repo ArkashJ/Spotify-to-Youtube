@@ -4,7 +4,7 @@ const {google} = require("googleapis")
 const axios = require("axios")
 
 const baseUrl = "https://www.googleapis.com/youtube/v3"
-const apiKey  = "AIzaSyCNTwNQTDIF3nIbdQBW53rTFrenOV0vWM0"
+const apiKey  = "add api key"
 
 const youtube = google.youtube({
     version: "v3",
